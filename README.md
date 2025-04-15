@@ -44,9 +44,22 @@ This instructions are from the [ros_unity_integration setup tutorial](https://gi
 
 after that, you can continue with the unity scene setup for a publisher node found [here](https://github.com/Unity-Technologies/Unity-Robotics-Hub/blob/main/tutorials/ros_unity_integration/publisher.md)
 
-to test the publisher, you only need to listen to the topic:
+## Testing
+
+To test the publisher, you only need to listen to the topic:
 
 ``` bash
 source install/setup.bash
 ros2 topic echo pos_rot
+```
+
+To test the listener, you can use the color publisher that comes with the [unity_robotics_demo](./unity_robotics_demo/unity_robotics_demo/color_publisher.py) pkg
+
+``` bash
+ros2 run unity_robotics_demo color_publisher
+```
+TO test de service, you can use the pose service that comes with the [unity_robotics_demo](./unity_robotics_demo/unity_robotics_demo/position_service.py) pkg changing the "Cube" in the object_name if you want the pose of another GameObject in the scene
+
+``` bash
+ros2 service call obj_pose_srv unity_robotics_demo_msgs/ObjectPoseService "{object_name: Cube}"
 ```
